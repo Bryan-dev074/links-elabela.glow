@@ -344,7 +344,7 @@ function ElabelaApp() {
           {/* Footer */}
           <footer className="page-footer">
             <div className="footer-line" />
-            <p className="footer-copy">© 2025 ElaBela Glow</p>
+            <p className="footer-copy">© 2026 ElaBela.glow</p>
             <p className="footer-sub">Belleza Premium · Paraguay &amp; Brasil</p>
           </footer>
         </main>
