@@ -154,13 +154,13 @@ function ElabelaApp() {
   const contactLabel  = lang === 'pt' ? 'Fale Conosco' : 'Contáctanos'
 
   const wa1 = {
-    label:   'Vendedora Sandra',
-    sublabel: '+595 983 141 303',
-    number:  '595983141303',
+    label:   'Vendedora',
+    sublabel: '+595 993 038777',
+    number:  '595993038777',
     hintEs:  '¿Buscas algún producto en específico? ¡Escribime! 😊',
     hintPt:  'Procurando um produto específico? Escreva para mim! 😊',
-    defaultMsgEs: '¡Hola Sandra! Busco un producto específico...',
-    defaultMsgPt: 'Olá Sandra! Estou procurando um produto específico...',
+    defaultMsgEs: '¡Hola! Busco un producto específico...',
+    defaultMsgPt: 'Olá! Estou procurando um produto específico...',
   }
   const wa2 = {
     label:   lang === 'pt' ? 'Assistência personalizada' : 'Asistencia personalizada',
