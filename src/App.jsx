@@ -264,7 +264,7 @@ function ElabelaApp() {
             {/* Instagram */}
             <a
               id="btn-instagram"
-              href="https://www.instagram.com/elabela.glow/"
+              href="https://www.instagram.com/ela.bela.glow/"
               target="_blank"
               rel="noopener noreferrer"
               className="social-btn"

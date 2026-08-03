@@ -16,8 +16,8 @@ export const translations = {
       {
         id: 'instagram',
         label: 'Instagram',
-        sublabel: '@elabela.glow',
-        url: 'https://www.instagram.com/elabela.glow/',
+        sublabel: '@ela.bela.glow',
+        url: 'https://www.instagram.com/ela.bela.glow/',
         type: 'standard',
         icon: 'instagram',
       },
@@ -68,8 +68,8 @@ export const translations = {
       {
         id: 'instagram',
         label: 'Instagram',
-        sublabel: '@elabela.glow',
-        url: 'https://www.instagram.com/elabela.glow/',
+        sublabel: '@ela.bela.glow',
+        url: 'https://www.instagram.com/ela.bela.glow/',
         type: 'standard',
         icon: 'instagram',
       },

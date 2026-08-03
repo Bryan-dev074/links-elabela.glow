@@ -68,7 +68,7 @@ function InstagramDrawer({ link }) {
           </div>
           <div>
             <div style={{ fontWeight: 600, color: 'var(--color-text-main)', fontSize: '0.95rem' }}>ElaBela Glow</div>
-            <div style={{ fontSize: '0.72rem', opacity: 0.65 }}>@elabela.glow</div>
+            <div style={{ fontSize: '0.72rem', opacity: 0.65 }}>@ela.bela.glow</div>
           </div>
         </div>
         <p style={{ marginBottom: 12, lineHeight: 1.55, fontSize: '0.82rem', opacity: 0.85 }}>
