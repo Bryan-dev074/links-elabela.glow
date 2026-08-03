@@ -296,7 +296,7 @@ function ElabelaApp() {
             {/* Facebook */}
             <a
               id="btn-facebook"
-              href="https://www.facebook.com/profile.php?id=61573675747127"
+              href="https://www.facebook.com/profile.php?id=61592207431285"
               target="_blank"
               rel="noopener noreferrer"
               className="social-btn"
