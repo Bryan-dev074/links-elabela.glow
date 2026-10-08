@@ -1,7 +1,16 @@
+import { useEffect, useRef } from 'react'
 import { useApp } from '../context/AppContext'
 
-export default function SplashScreen() {
+export default function SplashScreen({ ready = true }) {
   const { t, showSplash, splashExiting, selectCountry } = useApp()
+  const firstCountry = useRef(null)
+
+  useEffect(() => {
+    if (!ready || !showSplash) return
+    // Wait until React has removed `inert` from the parent after an early skip.
+    const timer = setTimeout(() => firstCountry.current?.focus({ preventScroll: true }), 0)
+    return () => clearTimeout(timer)
+  }, [ready, showSplash])
 
   if (!showSplash) return null
 
@@ -49,6 +58,7 @@ export default function SplashScreen() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, width: '100%' }}>
 
           <button
+            ref={firstCountry}
             id="btn-country-py"
             className="country-btn"
             onClick={() => selectCountry('py')}

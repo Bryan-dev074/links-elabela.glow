@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/logoelabela/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1a0e0c" />
+    <meta name="theme-color" content="#1b100c" />
+    <link rel="preload" as="image" href="/brand/logo-cream.svg" />
+    <style>
+      /* Brand-colored first paint while the application module loads. */
+      #root:empty { position: fixed; inset: 0; background: #1b100c; }
+      #root:empty::after { content: ''; position: absolute; inset: 0; background: url('/brand/logo-cream.svg') center / 160px auto no-repeat; opacity: .7; }
+    </style>
 
     <!-- SEO -->
     <title>ElaBela | Tu Destino de Belleza Premium · Paraguay & Brasil</title>
@@ -29,6 +35,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@200;300;400;500;600&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
   </head>
   <body>

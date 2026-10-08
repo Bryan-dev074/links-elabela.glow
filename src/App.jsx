@@ -1,7 +1,9 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { AppProvider, useApp } from './context/AppContext'
 import PowderCanvas from './components/PowderCanvas'
 import SplashScreen from './components/SplashScreen'
+import BrandLoader from './components/BrandLoader'
+import useReducedMotion from './hooks/useReducedMotion'
 
 // ── Íconos SVG inline ────────────────────────────────────────────────────────
 
@@ -133,7 +135,7 @@ function WhatsAppCard({ label, sublabel, number, lang, index, hintEs, hintPt, de
 
 // ── App principal ────────────────────────────────────────────────────────────
 
-function ElabelaApp() {
+function ElabelaApp({ introActive, reduced }) {
   const { t, lang, toggleLang, showSplash, goBack } = useApp()
   const [textKey, setTextKey] = useState(lang)
   const prevLang = useRef(lang)
@@ -177,10 +179,10 @@ function ElabelaApp() {
 
       {/* Fondo */}
       <div className="page-bg" aria-hidden="true" />
-      <PowderCanvas />
+      <PowderCanvas active={!introActive && !showSplash && !reduced} />
 
       {/* Splash */}
-      <SplashScreen />
+      <SplashScreen ready={!introActive} />
 
       {/* Selector de idioma (top right) */}
       {!showSplash && (
@@ -354,9 +356,22 @@ function ElabelaApp() {
 }
 
 export default function App() {
+  const reduced = useReducedMotion()
+  const [introActive, setIntroActive] = useState(true)
+  const [introRevealed, setIntroRevealed] = useState(false)
+  const revealIntro = useCallback(() => setIntroRevealed(true), [])
+  const completeIntro = useCallback(() => {
+    setIntroRevealed(true)
+    setIntroActive(false)
+  }, [])
+
   return (
     <AppProvider>
-      <ElabelaApp />
+      <div className={`links-stage${introRevealed ? '' : ' is-waiting'}`}
+        inert={introActive ? '' : undefined} aria-hidden={introActive ? true : undefined}>
+        <ElabelaApp introActive={introActive} reduced={reduced} />
+      </div>
+      {introActive && <BrandLoader reduced={reduced} onReveal={revealIntro} onComplete={completeIntro} />}
     </AppProvider>
   )
 }

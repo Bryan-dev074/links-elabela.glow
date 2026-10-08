@@ -19,14 +19,16 @@ function randBetween(a, b) {
   return a + Math.random() * (b - a)
 }
 
-export default function PowderCanvas() {
+export default function PowderCanvas({ active = true }) {
   const canvasRef = useRef(null)
   const stateRef  = useRef({ mx: 0.5, my: 0.5, scroll: 0, particles: [] })
 
   useEffect(() => {
+    if (!active) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
+    if (!ctx) return
     const state = stateRef.current
 
     let W = 0, H = 0
@@ -138,14 +140,14 @@ export default function PowderCanvas() {
       window.removeEventListener('touchmove', onTouchMove)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [])
+  }, [active])
 
   return (
     <canvas
       ref={canvasRef}
       id="powder-canvas"
       aria-hidden="true"
-      style={{ position: 'fixed', inset: 0, zIndex: 1, pointerEvents: 'none' }}
+      style={{ position: 'fixed', inset: 0, zIndex: 1, pointerEvents: 'none', visibility: active ? 'visible' : 'hidden' }}
     />
   )
 }

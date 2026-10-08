@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useRef } from 'react'
 import { translations, countryLangMap } from '../data/translations'
 
 // ─── Context Creation ────────────────────────────────────────────────────────
@@ -10,6 +10,11 @@ export function AppProvider({ children }) {
   const [splashExiting, setSplashExiting] = useState(false)
   const [country, setCountry] = useState(null)
   const [lang, setLang] = useState('es')
+  const exitTimer = useRef(null)
+
+  useEffect(() => () => clearTimeout(exitTimer.current), [])
+
+  useEffect(() => { document.documentElement.lang = lang }, [lang])
 
   // Derived translation set
   const t = translations[lang] || translations.es
@@ -22,10 +27,11 @@ export function AppProvider({ children }) {
 
     // Animate out the splash
     setSplashExiting(true)
-    setTimeout(() => {
+    clearTimeout(exitTimer.current)
+    exitTimer.current = setTimeout(() => {
       setShowSplash(false)
       setSplashExiting(false)
-    }, 650)
+    }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500)
   }
 
   // ── Toggle Language ───────────────────────────────────────────────────────
@@ -36,6 +42,8 @@ export function AppProvider({ children }) {
 
   // ── Go Back to Country Selector ──────────────────────────────────────────
   const goBack = () => {
+    clearTimeout(exitTimer.current)
+    setSplashExiting(false)
     setShowSplash(true)
     setCountry(null)
   }
