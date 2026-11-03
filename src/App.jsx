@@ -164,15 +164,6 @@ function ElabelaApp({ introActive, reduced }) {
     defaultMsgEs: '¡Hola! Busco un producto específico...',
     defaultMsgPt: 'Olá! Estou procurando um produto específico...',
   }
-  const wa2 = {
-    label:   lang === 'pt' ? 'Assistência personalizada' : 'Asistencia personalizada',
-    sublabel: '+595 981 078 868',
-    number:  '595981078868',
-    hintEs:  'Si tenés problemas técnicos, estamos a la orden 🛠️',
-    hintPt:  'Se tiver problemas técnicos, estamos à disposição 🛠️',
-    defaultMsgEs: '¡Hola! Necesito asistencia técnica...',
-    defaultMsgPt: 'Olá! Preciso de assistência técnica...',
-  }
 
   return (
     <div style={{ position: 'relative', minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
@@ -328,18 +319,6 @@ function ElabelaApp({ introActive, reduced }) {
               hintPt={wa1.hintPt}
               defaultMsgEs={wa1.defaultMsgEs}
               defaultMsgPt={wa1.defaultMsgPt}
-            />
-            <WhatsAppCard
-              key={`wa2-${textKey}`}
-              label={wa2.label}
-              sublabel={wa2.sublabel}
-              number={wa2.number}
-              lang={lang}
-              index={1}
-              hintEs={wa2.hintEs}
-              hintPt={wa2.hintPt}
-              defaultMsgEs={wa2.defaultMsgEs}
-              defaultMsgPt={wa2.defaultMsgPt}
             />
           </div>
 
